@@ -164,6 +164,7 @@ persist.sys.fuse.passthrough.enable=true
 vendor.gatekeeper.disable_spu=true
 
 # Graphics
+debug.renderengine.blur_algorithm=kawase2
 debug.sf.enable_advanced_sf_phase_offset=1
 debug.sf.enable_gl_backpressure=false
 debug.sf.enable_hwc_vds=1
