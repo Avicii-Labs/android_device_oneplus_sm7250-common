@@ -194,6 +194,10 @@ vendor.opengles.version=196610
 debug.hwui.use_hint_manager=true
 debug.hwui.target_cpu_time_percent=30
 
+# LMKD
+ro.lmk.kill_heaviest_task=true
+ro.lmk.kill_timeout_ms=100
+
 # Incremental FS
 ro.incremental.enable=yes
 
