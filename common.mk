@@ -192,6 +192,57 @@ PRODUCT_PACKAGES += \
 
 $(call soong_config_set,libinit,vendor_init_lib,//$(LOCAL_PATH):libinit_oplus)
 
+# Spammy log tags - silence on user/userdebug builds
+SPAMMY_LOG_TAGS := \
+    Diag_Lib \
+    artd \
+    ArtService \
+    SDM \
+    SRE \
+    libsensor-boledalgo \
+    libsensor-parseRGB \
+    libsensor-qshcalapi \
+    sensors \
+    sensors-hal \
+    a2dp_offload \
+    wpa_supplicant \
+    InetDiagMessage \
+    QtiCarrierConfigHelper \
+    DeviceStatisticsService \
+    DeviceInfoHidlClient \
+    NearbyDiscovery \
+    NearbyPresence \
+    NearbySharing \
+    GmsClient \
+    vendor.qti.hardware.display.composer-service \
+    vendor.qti.camera.provider-service_64 \
+    vendor.hardware.vibratorfeature \
+    CamX \
+    CAM_Thumbnail \
+    CAM_CaptureRequestBuilder \
+    CameraLatencyHistogram \
+    ChiX \
+    CHIIQUTILS \
+    CHISEG \
+    CHIUSECASE \
+    DEBUG-portrait_repair \
+    android.hardware.power-service.lineage-libperfmgr \
+    libperfmgr \
+    android.hardware.audio.service \
+    android.hardware.light-V2-ndk.vendor \
+    vibratorfeature-wrapper \
+    android.hardware.vibrator-V1-ndk_platform.vendor \
+    libqti-perfd-client \
+    BATTERY_CHG \
+    BackgroundInstallControlService \
+    BackupTransportManager \
+    ActivityManager
+
+ifneq ($(TARGET_BUILD_VARIANT),eng)
+PRODUCT_VENDOR_PROPERTIES += \
+    $(foreach tag,$(SPAMMY_LOG_TAGS),persist.log.tag.$(tag)=S)
+endif
+
 # Lineage Health
 PRODUCT_PACKAGES += \
     vendor.lineage.health-service.default
